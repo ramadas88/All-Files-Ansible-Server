@@ -1,0 +1,13 @@
+aws_secret_key: AKIAJBJQP6YQ2AXL752Q
+aws_access_key: biMLQs9Hc+IH/wy1gRsC4b8gFnelxqH2zkA7Qvf9 
+key_name: AWS-Linux-Acc2-LInux-1
+aws_region: us-west-2
+vpc_id: vpc-798d601f
+cidr_ip: 172.31.23.173 
+ami_id: ami-bf4193c7
+instance_type: t2.micro
+
+
+
+
+

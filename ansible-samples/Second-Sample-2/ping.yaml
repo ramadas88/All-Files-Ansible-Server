@@ -1,0 +1,5 @@
+---
+- hosts: servers
+  tasks:
+    - name: run echo command
+      command: /bin/echo hello samle

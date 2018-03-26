@@ -1,0 +1,7 @@
+BEGIN { FS=":" ; print "User Name" }
+#$3 > 500 { print $1 ; count++}
+#/^s/ { print $1 ; count++}
+
+#$3 > 500 { print $1, $7 ; count++}
+$3 > 500 { print toupper($1), $7 ; count++}
+END { print "Total Users :  " count }

@@ -1,0 +1,8 @@
+---
+http_port: 80
+Doc_dir: /ansible/
+Doc_root: /var/www/html/ansible
+username: MY name is Ramadas
+
+
+

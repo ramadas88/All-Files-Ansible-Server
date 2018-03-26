@@ -1,0 +1,54 @@
+---
+- hosts: webservers
+  sudo: yes
+  vars:
+   http_port: 80
+   doc_dir: /ansible/
+   Doc_root: /var/www/html/ansible/
+
+
+  vars_prompt:
+  - name: username
+    prompt: What is your username
+
+
+  tasks:
+  - name: Ensure that Apache is installed
+    yum: name=httpd state=installed
+    when: ansible_os_family== "Redhat"
+  - name: Start Apache service
+    service: name=httpd enabled=yes state=started
+
+  - name: Deploy Configuration File
+    template:  src=templates/httpd.j2 dest=/etc/httpd/conf.d/ansible.conf
+    notify:
+    - restart Apache
+ 
+  - name: Copy Site Files
+    template: src=template/index.j2 dest={{ Doc_root }}/index.html
+
+  handlers:
+   - name: restart Apache
+     service: name=httpd state=restarted
+
+- hosts: dbservers
+  sudo: yes
+
+
+  tasks:
+  - name: Ensure mysql is installed
+    yum: name=mysql-server state=present
+    when: ansible_os_family== "Redhat"
+
+  - name: mysql start
+    service: name=mysqld state=started
+
+- hosts: webservers:dbservers
+  sudo: yes
+
+  tasks:
+  - name: stop IPTABLES!!!
+    service: name=iptables state=stopped
+
+
+

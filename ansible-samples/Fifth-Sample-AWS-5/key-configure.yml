@@ -1,0 +1,11 @@
+---
+
+- hosts: localhost
+  tasks:
+   - name: ec2 key generate
+     ec2_key:
+        name: ramadas-ansible-key-2
+        region: us-west-2
+        key_material: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1yRuRLsgSkQ9wvh7cB2ecvhZZ6Gf0W9JTrZ9UDpGg07NqMr6YhSV2nQ3TdWtBIsPgTn5cNAdwlJFJK1HgeHA+rE7Rd9GJrTSrxNIM47m4NKuKJj3R+dJMAn923WvB/sohxEEbHfQ8Suku4RibmTMJRWdC3RWnGbvaHJQfvJM8yt7Mtb2NrCdz4c1iR1jTL+mhGtO9POnWgTZQnyE63CvaynwAD41w809Akhf3ygNPRCpg5jqo/NwyAeDqfnWI7QN5yGdb64nkU4UemaVtN8yurdI/C8xUOUfeHWzwJv04jMznxSHkVgXrrJ9ByelSW1MpRqcCd9LwY+TnXO1xJnIN root@Centos7-ansible-server-1.ram.com'
+        state: present
+

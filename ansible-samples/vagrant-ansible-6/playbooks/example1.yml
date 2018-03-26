@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  gather_facts: False
+  remote_user: vagrant
+  vars:
+    port: 8080
+  tasks:
+    - name: Install HTTPD package
+      yum: name=httpd state=latest
+      sudo: yes
+
+        

@@ -1,0 +1,85 @@
+FROM centos:7
+RUN yum -y install epel-release
+RUN yum -y update
+RUN yum -y install nginx
+#ADD index.html /usr/share/nginx/html/index.html
+
+
+
+ADD nginx.conf  /etc/nginx/nginx.conf
+
+COPY nginx-config/  /etc/nginx/conf.d/ 
+
+
+RUN mkdir -p /usr/share/nginx/www/myfirstpage
+RUN mkdir -p /usr/share/nginx/www/mysecondpage
+RUN mkdir -p /usr/share/nginx/www/mythirdpage
+
+ADD html-files/1.html /usr/share/nginx/www/myfirstpage/
+ADD html-files/2.html /usr/share/nginx/www/mysecondpage/
+ADD html-files/3.html /usr/share/nginx/www/mythirdpage/
+
+
+
+
+EXPOSE 80/tcp
+CMD ["nginx", "-g daemon off;"]
+
+
+
+
+
+
+
+#FROM centos:latest
+#
+#MAINTAINER Cameron Waldron <cameron.waldron@gmail.com>
+#
+#COPY scripts/ /root/scripts/
+#ENV PATH scripts:$PATH
+#EXPOSE 80 443
+#RUN yum -y update && \
+#    yum -y install epel-release && \
+#    yum -y install nginx &&\ 
+#    yum clean all && \
+#    scripts/initialize
+#CMD ["nginx","-g","daemon off;"]
+
+
+
+
+
+
+
+#FROM centos:centos7
+#MAINTAINER Vicente Zepeda <chente.z.m@gmail.com>
+#
+#ENV nginxversion="1.12.1-1" \
+#    os="centos" \
+#    osversion="7"
+#
+#RUN yum install -y wget openssl sed &&\
+#    package-cleanup -q --leaves | xargs -l1 yum -y remove &&\
+#    yum clean all &&\
+#    wget http://nginx.org/packages/$os/$osversion/x86_64/RPMS/nginx-$nginxversion.el$osversion.ngx.x86_64.rpm &&\
+#    rpm -iv nginx-$nginxversion.el$osversion.ngx.x86_64.rpm &&\
+#    sed -i '1i\
+#    daemon off;\
+#    ' /etc/nginx/nginx.conf
+#
+#CMD ["nginx"]
+
+
+
+
+
+
+
+#FROM centos:7
+#MAINTAINER amazee.io
+#
+#RUN yum install -y epel-release && \ 
+#    yum install -y \
+#        nginx && \
+#    yum clean all
+#CMD ["nginx"]

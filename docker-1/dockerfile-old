@@ -1,0 +1,9 @@
+FROM centos:7
+RUN yum -y update && yum clean all
+RUN yum install epel-release -y
+RUN yum install nginx -y
+RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD [ "nginx18" ]
+
+
