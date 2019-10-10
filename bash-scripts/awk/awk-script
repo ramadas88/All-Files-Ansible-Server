@@ -1,0 +1,10 @@
+awk -F ':' 'BEGIN{OFS="=";} {print $4,$4;}' /etc/passwd
+
+awk 'BEGIN{ORS="=";} {print;}'  students.txt
+
+
+awk '{print "Processing Record ‐ ",NR;}END {print NR, "Students Records are processed";}' students.txt
+
+
+
+awk '{print NR,"‐>",NF}' student‐marks
